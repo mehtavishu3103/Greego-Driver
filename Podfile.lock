@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (4.7.0)
+  - CTCheckbox (0.0.5)
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.6.0):
+    - GoogleMaps/Base (= 2.6.0)
+  - SVPinView (1.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - CTCheckbox
+  - GoogleMaps
+  - GooglePlaces
+  - SVPinView (~> 1.0.1)
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  CTCheckbox: fec0e51c635ad555effd230a1fa186105010a382
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
+  SVPinView: c44afcba589fd2d316d4a4d28cdd527699506a80
+
+PODFILE CHECKSUM: 429cf98dc34af001a32417c3372f4db1ebafe9e3
+
+COCOAPODS: 1.4.0

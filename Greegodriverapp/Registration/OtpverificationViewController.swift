@@ -139,6 +139,14 @@ class OtpverificationViewController: UIViewController {
                             
                             self.strotp = otpstring.stringValue
                             
+                            var dic = response.result.value as! NSDictionary
+                            let profilestatus = datadic.value(forKey: "profile_status") as! Int
+                            let status = profilestatus as! NSNumber
+                            
+                            let user = UserDefaults.standard
+                            print(status.stringValue)
+                            user.set(status.stringValue, forKey: "profile_status")
+                            
                             
                         }
                     }

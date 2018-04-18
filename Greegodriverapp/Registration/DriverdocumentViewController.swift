@@ -58,6 +58,13 @@ class DriverdocumentViewController: UIViewController {
         view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         view.layer.shadowRadius = 2
     }
+    
+    @IBAction func btnnextaction(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DriverbankViewController") as! DriverbankViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

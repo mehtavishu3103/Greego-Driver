@@ -63,15 +63,18 @@ class DriverpersonalinfoViewController: UIViewController {
         else{
            checkinfo()
           
-            
         }
         
     }
+    
+    
     
     func checkinfo()
     {
         if AppDelegate.hasConnectivity() == true
         {
+            let token = UserDefaults.standard.value(forKey: "devicetoken") as! String
+            let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
            
             let parameters = [
                 "legal_firstname":txtfname.text!,
@@ -81,7 +84,7 @@ class DriverpersonalinfoViewController: UIViewController {
                   "dob": txtdob.text!
             ]
             
-            Alamofire.request(WebServiceClass().BaseURL+"driver/update/personalinfo", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+            Alamofire.request(WebServiceClass().BaseURL+"driver/update/personalinfo", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
@@ -89,8 +92,22 @@ class DriverpersonalinfoViewController: UIViewController {
                         print(response.result.value!)
                         
                         
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermandconditionViewController") as! TermandconditionViewController
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DrivershippingaddViewController") as! DrivershippingaddViewController
                         self.navigationController?.pushViewController(vc, animated: true)
+                        var dic = response.result.value as! NSDictionary
+                        var datadic :NSDictionary = dic.value(forKey: "data") as! NSDictionary
+                        let profilestatus = datadic.value(forKey: "profile_status") as! Int
+                        let status = profilestatus as! NSNumber
+                        
+                        let user = UserDefaults.standard
+                        print(status.stringValue)
+                        user.set(status.stringValue, forKey: "profile_status")
+                        user.set(self.txtfname.text!, forKey: "firstname")
+                        user.set(self.txtmname.text!, forKey: "middlename")
+                        user.set(self.txtlname.text!, forKey: "lastname")
+                        user.set(self.txtnumber.text!, forKey: "securitynum")
+                        user.set(self.txtdob.text!, forKey: "dob")
+                        user.synchronize()
                     }
                     break
                     

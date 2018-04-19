@@ -8,13 +8,9 @@
 
 import UIKit
 import  Alamofire
-import CTCheckbox
-class TermandconditionViewController: UIViewController,UIScrollViewDelegate {
 
-    
-    @IBOutlet weak var cb: CTCheckbox!
-    
-    @IBOutlet weak var lblagree: UILabel!
+class TermandconditionViewController: UIViewController {
+
     
     @IBOutlet weak var textview: UITextView!
     var ischecked:String = "0"
@@ -29,34 +25,8 @@ class TermandconditionViewController: UIViewController,UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    var lastContentOffset: CGFloat = 0
-    
-    // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-    }
-    
-    // while scrolling this delegate is being called so you may now check which direction your scrollView is being scrolled to
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
-            // moved to top
-         
-            cb.isHidden = false
-            lblagree.isHidden = false
 
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-          cb.isHidden = true
-            lblagree.isHidden = true
-            
-            // moved to bottom
-        } else {
-            // didn't move
-        }
-    }
     @IBAction func nextbtnaction(_ sender: Any) {
-     
-       
-        
         
         if(ischecked == "0")
             
@@ -69,18 +39,10 @@ class TermandconditionViewController: UIViewController,UIScrollViewDelegate {
             
         else
         {
-            
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PromocodeViewController") as! PromocodeViewController
-            self.navigationController?.pushViewController(nextViewController, animated: true)
-            
-           // getuserprofile()
+            getuserprofile()
             
         }
     }
-    
-    
     
     @IBAction func checkbox(_ sender: Any) {
         

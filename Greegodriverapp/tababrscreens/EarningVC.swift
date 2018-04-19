@@ -1,21 +1,21 @@
 //
-//  PromocodeViewController.swift
+//  EarningVC.swift
 //  Greegodriverapp
 //
-//  Created by Harshal Shah on 4/11/18.
+//  Created by Ravi Dubey on 4/18/18.
 //  Copyright © 2018 Harshal Shah. All rights reserved.
 //
 
 import UIKit
 
-class PromocodeViewController: UIViewController {
-
+class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource {
     
-    @IBOutlet weak var promocodeview: UIView!
+    
+    @IBOutlet weak var payoutview: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setShadow(view: promocodeview)
+    payoutview.layer.cornerRadius = 12.0
         // Do any additional setup after loading the view.
     }
 
@@ -23,14 +23,21 @@ class PromocodeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func setShadow(view: UIView)
-    {
-        view.layer.shadowColor = UIColor.lightGray.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowRadius = 2
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: Amountcell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Amountcell
+        cell.view.layer.cornerRadius = 12.0
+        
+        return cell
+        
+        
+        
+    }
+
     /*
     // MARK: - Navigation
 

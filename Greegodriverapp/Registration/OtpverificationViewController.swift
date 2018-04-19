@@ -30,8 +30,13 @@ class OtpverificationViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         lbltimer.text = "00:00"
         lblmobile.text = "Enter six digit code sent to " + strmobileno!
-    btnresend.isEnabled = false
     
+        let tap = UITapGestureRecognizer()
+        
+        
+        tap.addTarget(self, action:#selector(getter: btnresend))
+        
+        btnresend.addGestureRecognizer(tap)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 60.0, execute: {
             
@@ -90,11 +95,11 @@ class OtpverificationViewController: UIViewController {
             let seconds = String(count % 60)
             lbltimer.text = minutes + ":" + seconds
             count -= 1;
-            btnresend.isEnabled = false
+            btnresend.isUserInteractionEnabled = false
             if count == 0 {
                 timer?.invalidate()
                 lbltimer.text = "00:00"
-                btnresend.isEnabled = true
+                btnresend.isUserInteractionEnabled = true
             }
         }else{
             timer?.invalidate()
@@ -119,9 +124,9 @@ class OtpverificationViewController: UIViewController {
                 case .success(_):
                     if let data = response.result.value{
                         print(response.result.value!)
-                        self.btnresend.isEnabled = false
-
                         
+                        
+                        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
                         
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
@@ -129,10 +134,8 @@ class OtpverificationViewController: UIViewController {
                         if(dic.value(forKey: "error_code") as! NSNumber  == 0)
                         {
                             var datadic :NSDictionary = dic.value(forKey: "data") as! NSDictionary
-                            self.count = 60
-                            self.lbltimer.text = "00:00"
-                            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-
+                            
+                            
                             
                             let otpstring = datadic.value(forKey: "otp") as! NSNumber
                             let devicetoken =  datadic.value(forKey: "token") as! String
@@ -196,10 +199,6 @@ class OtpverificationViewController: UIViewController {
                                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
                                 self.navigationController?.pushViewController(nextViewController, animated: true)
                                 
-                                let user = UserDefaults.standard
-                                
-                                user.set(self.strmobileno!, forKey: "mobile")
-                                user.synchronize()
                                 
                             }
                             else
@@ -210,7 +209,8 @@ class OtpverificationViewController: UIViewController {
                                 
                                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
                                 self.navigationController?.pushViewController(nextViewController, animated: true)
-                              
+                                
+                                
                             }
                             
                         }
@@ -241,6 +241,16 @@ class OtpverificationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  
+   
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }

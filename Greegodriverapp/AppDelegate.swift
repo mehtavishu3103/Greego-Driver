@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +19,91 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
+        IQKeyboardManager.sharedManager().enable = true
+       /*if let key = UserDefaults.standard.object(forKey: "profile_status"){
+            var status = UserDefaults.standard.string(forKey:"profile_status")
+          if(status == "2"){
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "DrivershippingaddViewController")as! DrivershippingaddViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+            else if(status == "3"){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "DriverdocumentViewController")
+            navigationController.pushViewController(initialViewController, animated: true)
+           self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+                /*self.window = UIWindow(frame: UIScreen.main.bounds)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "DriverdocumentViewController")as! DriverdocumentViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()*/
+          }else if(status == "5"){
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "DrivertypeViewController")
+            navigationController.pushViewController(initialViewController, animated: true)
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+            
+        
+            }
+          else if(status == "6"){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "DriverprofileViewController")
+            navigationController.pushViewController(initialViewController, animated: true)
+            self.window?.rootViewController = navigationController
+            self.window?.makeKeyAndVisible()
+            
+            
+            }
+        }*/
+        
+      
         GMSServices.provideAPIKey("AIzaSyCTYoZFJBLdRwY9QdneWtG4LvwVuzSw_AM")
         GMSPlacesClient.provideAPIKey("AIzaSyAyvGa8vAvoiFNgAUo8QW7zh8qJbBn8X8o")
-        
+        DispatchQueue.main.async {
+            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerForRemoteNotifications()
 
+        }
+        return true
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let characterSet = CharacterSet(charactersIn: "<>")
+                let deviceTokenString = deviceToken.description.trimmingCharacters(in: characterSet).replacingOccurrences(of: " ", with: "");
+                print(deviceTokenString)
+        
+                let user = UserDefaults.standard
+                user.set(deviceTokenString, forKey: "devicetoken")
+                user.synchronize()
+        
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != UIUserNotificationType() {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error!) {
+        print(error.localizedDescription)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

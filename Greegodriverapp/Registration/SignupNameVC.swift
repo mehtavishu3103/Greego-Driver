@@ -22,6 +22,14 @@ class SignupNameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "bg_rectangle")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
+        
         let border = CALayer()
         let width = CGFloat(2.0)
         border.borderColor = UIColor.darkGray.cgColor
@@ -44,6 +52,11 @@ class SignupNameVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    @IBAction func btnbackaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func nextbtnaction(_ sender: Any) {
         
@@ -80,14 +93,12 @@ class SignupNameVC: UIViewController {
             user.synchronize()
             
             
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermandconditionViewController") as! TermandconditionViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PromocodeViewController") as! PromocodeViewController
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
         
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

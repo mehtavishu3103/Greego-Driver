@@ -15,11 +15,11 @@ class ViewController: UIViewController {
         
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "taxi-background")
+        backgroundImage.image = UIImage(named: "start")
         backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
-        
+         
         // Do any additional setup after loading the view, typically from a nib.
     }
 

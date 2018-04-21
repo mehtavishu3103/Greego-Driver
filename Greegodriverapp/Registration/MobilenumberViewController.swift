@@ -8,8 +8,7 @@
 
 import UIKit
 import Alamofire
-
-
+import SVProgressHUD
 class MobilenumberViewController: UIViewController {
 
     
@@ -17,6 +16,12 @@ class MobilenumberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "bg_rectangle")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         txtmobilenumber.leftViewMode = UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         let image = UIImage(named: "usaflag")
@@ -61,9 +66,12 @@ class MobilenumberViewController: UIViewController {
     {
         if AppDelegate.hasConnectivity() == true
         {
+            
+            
+            SVProgressHUD.show()
            // print(txtmobilenumber.text!)
             let parameters = [
-                "contact_number":txtmobilenumber.text!,
+                "contact_number":"+91"+txtmobilenumber.text!,
                 "is_iphone": "0",
                 "user_type": "driver"
             ]
@@ -75,7 +83,8 @@ class MobilenumberViewController: UIViewController {
                     if let data = response.result.value{
                         print(response.result.value!)
                         
-                        
+                        SVProgressHUD.dismiss()
+
                         
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
@@ -107,6 +116,8 @@ class MobilenumberViewController: UIViewController {
                     break
                     
                 case .failure(_):
+                    SVProgressHUD.dismiss()
+
                     print(response.result.error)
                     break
                     
@@ -121,16 +132,5 @@ class MobilenumberViewController: UIViewController {
         
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }

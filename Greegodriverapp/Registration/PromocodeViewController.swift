@@ -16,6 +16,11 @@ class PromocodeViewController: UIViewController {
         super.viewDidLoad()
         
         self.setShadow(view: promocodeview)
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "bg_rectangle")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         // Do any additional setup after loading the view.
     }
 
@@ -31,6 +36,13 @@ class PromocodeViewController: UIViewController {
         view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         view.layer.shadowRadius = 2
     }
+    
+    @IBAction func btnskipaction(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermandconditionViewController") as! TermandconditionViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

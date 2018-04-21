@@ -8,15 +8,28 @@
 
 import UIKit
 import  Alamofire
+import CTCheckbox
+import SVProgressHUD
 
-class TermandconditionViewController: UIViewController {
+class TermandconditionViewController: UIViewController,UIScrollViewDelegate {
 
+    
+    @IBOutlet weak var cb: CTCheckbox!
+    
+    @IBOutlet weak var lblagree: UILabel!
     
     @IBOutlet weak var textview: UITextView!
     var ischecked:String = "0"
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "bg_rectangle")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+textview.isEditable = false
         // Do any additional setup after loading the view.
     }
 
@@ -25,8 +38,40 @@ class TermandconditionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    var lastContentOffset: CGFloat = 0
+    
+    // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    // while scrolling this delegate is being called so you may now check which direction your scrollView is being scrolled to
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            // moved to top
+         
+            cb.isHidden = false
+            lblagree.isHidden = false
 
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+          cb.isHidden = true
+            lblagree.isHidden = true
+            
+            // moved to bottom
+        } else {
+            // didn't move
+        }
+    }
+    
+    
+    @IBAction func btnbackaction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func nextbtnaction(_ sender: Any) {
+     
+       
+        
         
         if(ischecked == "0")
             
@@ -39,10 +84,15 @@ class TermandconditionViewController: UIViewController {
             
         else
         {
-            getuserprofile()
+            
+      
+            
+     getuserprofile()
             
         }
     }
+    
+    
     
     @IBAction func checkbox(_ sender: Any) {
         
@@ -64,30 +114,31 @@ class TermandconditionViewController: UIViewController {
     {
         if AppDelegate.hasConnectivity() == true
         {
+            SVProgressHUD.show()
+            
             
             let token = UserDefaults.standard.value(forKey: "devicetoken") as! String
             let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
             
             let parameters = [
                 "name":UserDefaults.standard.value(forKey: "fname") as! String,
+                "lastname": UserDefaults.standard.value(forKey: "lname") as! String,
+                "promocode": "1234",
                 "email": UserDefaults.standard.value(forKey: "email") as! String,
-                "lastname":UserDefaults.standard.value(forKey: "lname") as! String,
-                "city": "",
-                "profile_pic":"",
+               
                 "is_agreed": ischecked,
                 
                 ]
-            
-            
-            Alamofire.request(WebServiceClass().BaseURL+"user/update", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
+            Alamofire.request(WebServiceClass().BaseURL+"driver/update", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
                 
                 switch(response.result) {
                 case .success(_):
+                    
+                    SVProgressHUD.dismiss()
+                    
                     if let data = response.result.value{
                         print(response.result.value!)
-                        
-                        
-                        
+                     
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
                         
@@ -98,11 +149,20 @@ class TermandconditionViewController: UIViewController {
                             let newdic: NSDictionary = dic.value(forKey: "data") as! NSDictionary
                             
                             
+                            let status = newdic.value(forKey: "profile_status") as! NSNumber
+                            
+                            
+                            let user = UserDefaults.standard
+                            
+                          
+                            user.set(status.stringValue, forKey: "profilestatus")
+                            
+                            user.synchronize()
                             
                             
                             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                             
-                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DriverpersonalinfoViewController") as! DriverpersonalinfoViewController
                             self.navigationController?.pushViewController(nextViewController, animated: true)
                             
                             
@@ -113,6 +173,8 @@ class TermandconditionViewController: UIViewController {
                     break
                     
                 case .failure(_):
+                    SVProgressHUD.dismiss()
+
                     print(response.result.error)
                     break
                     
@@ -127,15 +189,5 @@ class TermandconditionViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

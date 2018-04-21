@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SVPinView
-
+import SVProgressHUD
 class OtpverificationViewController: UIViewController {
 
     var strmobileno: String?
@@ -27,16 +27,19 @@ class OtpverificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //print(strmobileno)
+        
+        
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "bg_rectangle")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         lbltimer.text = "00:00"
         lblmobile.text = "Enter six digit code sent to " + strmobileno!
+    btnresend.isEnabled = false
     
-        let tap = UITapGestureRecognizer()
-        
-        
-        tap.addTarget(self, action:#selector(getter: btnresend))
-        
-        btnresend.addGestureRecognizer(tap)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 60.0, execute: {
             
@@ -88,6 +91,11 @@ class OtpverificationViewController: UIViewController {
         
     }
     
+    @IBAction func backaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+
+    }
     
     @objc func update() {
         if(count > 0){
@@ -95,11 +103,11 @@ class OtpverificationViewController: UIViewController {
             let seconds = String(count % 60)
             lbltimer.text = minutes + ":" + seconds
             count -= 1;
-            btnresend.isUserInteractionEnabled = false
+            btnresend.isEnabled = false
             if count == 0 {
                 timer?.invalidate()
                 lbltimer.text = "00:00"
-                btnresend.isUserInteractionEnabled = true
+                btnresend.isEnabled = true
             }
         }else{
             timer?.invalidate()
@@ -111,9 +119,10 @@ class OtpverificationViewController: UIViewController {
         
         if AppDelegate.hasConnectivity() == true
         {
-            
+            SVProgressHUD.show()
+
             let parameters = [
-                "contact_number":strmobileno,
+                "contact_number":"+91"+strmobileno!,
                 "is_iphone": "0",
                 "user_type": "driver"
             ]
@@ -123,10 +132,13 @@ class OtpverificationViewController: UIViewController {
                 switch(response.result) {
                 case .success(_):
                     if let data = response.result.value{
+                        
+                        SVProgressHUD.dismiss()
+
                         print(response.result.value!)
+                        self.btnresend.isEnabled = false
+
                         
-                        
-                        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
                         
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
@@ -134,13 +146,21 @@ class OtpverificationViewController: UIViewController {
                         if(dic.value(forKey: "error_code") as! NSNumber  == 0)
                         {
                             var datadic :NSDictionary = dic.value(forKey: "data") as! NSDictionary
-                            
-                            
+                            self.count = 60
+                            self.lbltimer.text = "00:00"
+                            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+
                             
                             let otpstring = datadic.value(forKey: "otp") as! NSNumber
                             let devicetoken =  datadic.value(forKey: "token") as! String
                             
                             self.strotp = otpstring.stringValue
+                            
+                            var dic = response.result.value as! NSDictionary
+                            let profilestatus = datadic.value(forKey: "profile_status") as! Int
+                            let status = profilestatus as! NSNumber
+                            
+                        
                             
                             
                         }
@@ -148,6 +168,8 @@ class OtpverificationViewController: UIViewController {
                     break
                     
                 case .failure(_):
+                    SVProgressHUD.dismiss()
+
                     print(response.result.error)
                     break
                     
@@ -166,7 +188,8 @@ class OtpverificationViewController: UIViewController {
     {
         if AppDelegate.hasConnectivity() == true
         {
-            
+            SVProgressHUD.show()
+
             print(UserDefaults.standard.value(forKey: "devicetoken") as! String)
             
             
@@ -181,7 +204,7 @@ class OtpverificationViewController: UIViewController {
                     if let data = response.result.value{
                         print(response.result.value!)
                         
-                        
+                        SVProgressHUD.dismiss()
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
                         
@@ -191,7 +214,7 @@ class OtpverificationViewController: UIViewController {
                             
                             let newdic: NSDictionary = dic.value(forKey: "data") as! NSDictionary
                             
-                            if(newdic.value(forKey: "is_agreed") as! String == "0")
+                            if(newdic.value(forKey: "profile_status") as! NSNumber == 0)
                             {
                                 
                                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -199,6 +222,20 @@ class OtpverificationViewController: UIViewController {
                                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
                                 self.navigationController?.pushViewController(nextViewController, animated: true)
                                 
+                                
+                                let status = newdic.value(forKey: "profile_status") as! NSNumber
+
+                                
+                                let user = UserDefaults.standard
+                                
+                                user.set(self.strmobileno!, forKey: "mobile")
+                                
+                                user.set(status.stringValue, forKey: "profilestatus")
+                                
+                                user.set(newdic.value(forKey: "is_approve") as! String, forKey: "isaprroved")
+
+
+                                user.synchronize()
                                 
                             }
                             else
@@ -209,8 +246,7 @@ class OtpverificationViewController: UIViewController {
                                 
                                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
                                 self.navigationController?.pushViewController(nextViewController, animated: true)
-                                
-                                
+                              
                             }
                             
                         }
@@ -218,6 +254,8 @@ class OtpverificationViewController: UIViewController {
                     break
                     
                 case .failure(_):
+                    SVProgressHUD.dismiss()
+
                     print(response.result.error)
                     break
                     
@@ -233,7 +271,7 @@ class OtpverificationViewController: UIViewController {
     }
     
         
-   
+  
     
     
     override func didReceiveMemoryWarning() {
@@ -241,16 +279,6 @@ class OtpverificationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-   
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }

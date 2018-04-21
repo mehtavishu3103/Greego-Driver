@@ -23,6 +23,11 @@ class EmailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnbackaction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     @IBAction func nextbtnaction(_ sender: Any) {
         
         if(isValidEmail(testStr: txtemail.text!))
@@ -31,15 +36,15 @@ class EmailViewController: UIViewController {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupNameVC") as! SignupNameVC
             self.navigationController?.pushViewController(vc, animated: true)
             
-            
-        }
-        else
-        {
             let user = UserDefaults.standard
             
             user.set(txtemail.text!, forKey: "email")
             
             user.synchronize()
+        }
+        else
+        {
+            
             
             let alert = UIAlertController(title: "Alert", message: "Please enter correct Email", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

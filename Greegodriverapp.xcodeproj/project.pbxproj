@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2100F8FD2086092000CD7EFD /* DrivemapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100F8FC2086092000CD7EFD /* DrivemapVC.swift */; };
-		213FDD05208716B300D3A676 /* Segoe UI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213FDD022087169200D3A676 /* Segoe UI.ttf */; };
-		213FDD06208716B300D3A676 /* segoe_ui_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213FDD032087169500D3A676 /* segoe_ui_bold_italic.ttf */; };
-		213FDD07208716B300D3A676 /* segoe_ui_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213FDD042087169800D3A676 /* segoe_ui_italic.ttf */; };
-		213FDD09208728AA00D3A676 /* EarningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FDD08208728AA00D3A676 /* EarningVC.swift */; };
-		213FDD0E2087294000D3A676 /* Amountcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FDD0D2087294000D3A676 /* Amountcell.swift */; };
-		213FDD10208763D600D3A676 /* ManageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FDD0F208763D600D3A676 /* ManageVC.swift */; };
+		2119BF26208B260900C20D4F /* ExpressPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119BF25208B260900C20D4F /* ExpressPayVC.swift */; };
 		5A0BC9717556D2AB1BF24364 /* Pods_GreegodriverappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58918D30DF48BA4ADBFE9C9 /* Pods_GreegodriverappUITests.framework */; };
 		730A8D79207F20AC00152F84 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A8D78207F20AC00152F84 /* HelpViewController.swift */; };
 		730A8D7C207F2AA400152F84 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A8D7B207F2AA400152F84 /* SettingViewController.swift */; };
@@ -43,6 +37,13 @@
 		736E6064207E169900EDC89B /* sidemenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E6062207E169900EDC89B /* sidemenuViewController.swift */; };
 		736E6066207E1B7400EDC89B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E6065207E1B7400EDC89B /* MenuViewController.swift */; };
 		73952EF1207889E300C859B7 /* SignupNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73952EF0207889E300C859B7 /* SignupNameVC.swift */; };
+		73B5E68A2089A14000FBE0F9 /* DrivemapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6852089A13E00FBE0F9 /* DrivemapVC.swift */; };
+		73B5E68B2089A14000FBE0F9 /* EarningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6862089A13E00FBE0F9 /* EarningVC.swift */; };
+		73B5E68C2089A14000FBE0F9 /* ManageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6872089A13E00FBE0F9 /* ManageVC.swift */; };
+		73B5E68D2089A14000FBE0F9 /* payoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6882089A13F00FBE0F9 /* payoutVC.swift */; };
+		73B5E68E2089A14000FBE0F9 /* RidehistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6892089A13F00FBE0F9 /* RidehistoryVC.swift */; };
+		73B5E6932089A21F00FBE0F9 /* Amountcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6912089A21E00FBE0F9 /* Amountcell.swift */; };
+		73B5E6942089A21F00FBE0F9 /* PayoutActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5E6922089A21F00FBE0F9 /* PayoutActivityCell.swift */; };
 		73CBA35F2080787F0010271A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA35E2080787E0010271A /* EmailViewController.swift */; };
 		73CBA361208086B90010271A /* TermandconditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBA360208086B90010271A /* TermandconditionViewController.swift */; };
 		D69D3B7A571BA7D9E61576B5 /* Pods_Greegodriverapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A770A6BA830DF9EF20B29F /* Pods_Greegodriverapp.framework */; };
@@ -69,13 +70,7 @@
 /* Begin PBXFileReference section */
 		1E2E5C316AB7804DEE9CB51D /* Pods-GreegodriverappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreegodriverappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GreegodriverappTests/Pods-GreegodriverappTests.release.xcconfig"; sourceTree = "<group>"; };
 		2058716E25E01CC9478016A5 /* Pods-GreegodriverappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreegodriverappUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GreegodriverappUITests/Pods-GreegodriverappUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2100F8FC2086092000CD7EFD /* DrivemapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivemapVC.swift; sourceTree = "<group>"; };
-		213FDD022087169200D3A676 /* Segoe UI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Segoe UI.ttf"; sourceTree = "<group>"; };
-		213FDD032087169500D3A676 /* segoe_ui_bold_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoe_ui_bold_italic.ttf; sourceTree = "<group>"; };
-		213FDD042087169800D3A676 /* segoe_ui_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoe_ui_italic.ttf; sourceTree = "<group>"; };
-		213FDD08208728AA00D3A676 /* EarningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningVC.swift; sourceTree = "<group>"; };
-		213FDD0D2087294000D3A676 /* Amountcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amountcell.swift; sourceTree = "<group>"; };
-		213FDD0F208763D600D3A676 /* ManageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageVC.swift; sourceTree = "<group>"; };
+		2119BF25208B260900C20D4F /* ExpressPayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPayVC.swift; sourceTree = "<group>"; };
 		35723F21BCF507A0EBF483BE /* Pods-Greegodriverapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greegodriverapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Greegodriverapp/Pods-Greegodriverapp.debug.xcconfig"; sourceTree = "<group>"; };
 		58CE5B777491165BA0C50600 /* Pods-GreegodriverappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreegodriverappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GreegodriverappTests/Pods-GreegodriverappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6C8E298B48A9EC3F34E8DF21 /* Pods-GreegodriverappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreegodriverappUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GreegodriverappUITests/Pods-GreegodriverappUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +80,7 @@
 		730A8D80207F80A000152F84 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		730A8D81207F80AC00152F84 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		730A8D83207F80B700152F84 /* WebServiceClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClass.swift; sourceTree = "<group>"; };
+		73139C582086030D00C4A488 /* Greegodriverapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Greegodriverapp.entitlements; sourceTree = "<group>"; };
 		734F551820775E7B00512886 /* Greegodriverapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greegodriverapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734F551B20775E7B00512886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		734F551D20775E7B00512886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +112,13 @@
 		736E6062207E169900EDC89B /* sidemenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sidemenuViewController.swift; sourceTree = "<group>"; };
 		736E6065207E1B7400EDC89B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		73952EF0207889E300C859B7 /* SignupNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNameVC.swift; sourceTree = "<group>"; };
+		73B5E6852089A13E00FBE0F9 /* DrivemapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivemapVC.swift; sourceTree = "<group>"; };
+		73B5E6862089A13E00FBE0F9 /* EarningVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningVC.swift; sourceTree = "<group>"; };
+		73B5E6872089A13E00FBE0F9 /* ManageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageVC.swift; sourceTree = "<group>"; };
+		73B5E6882089A13F00FBE0F9 /* payoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = payoutVC.swift; sourceTree = "<group>"; };
+		73B5E6892089A13F00FBE0F9 /* RidehistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidehistoryVC.swift; sourceTree = "<group>"; };
+		73B5E6912089A21E00FBE0F9 /* Amountcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amountcell.swift; sourceTree = "<group>"; };
+		73B5E6922089A21F00FBE0F9 /* PayoutActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayoutActivityCell.swift; sourceTree = "<group>"; };
 		73CBA35E2080787E0010271A /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		73CBA360208086B90010271A /* TermandconditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermandconditionViewController.swift; sourceTree = "<group>"; };
 		95D2C759D94B517E0927ED67 /* Pods_GreegodriverappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GreegodriverappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,34 +155,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2100F8FB208608D500CD7EFD /* tababrscreens */ = {
-			isa = PBXGroup;
-			children = (
-				2100F8FC2086092000CD7EFD /* DrivemapVC.swift */,
-				213FDD0F208763D600D3A676 /* ManageVC.swift */,
-				213FDD08208728AA00D3A676 /* EarningVC.swift */,
-			);
-			path = tababrscreens;
-			sourceTree = "<group>";
-		};
-		213FDD012087164000D3A676 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				213FDD022087169200D3A676 /* Segoe UI.ttf */,
-				213FDD032087169500D3A676 /* segoe_ui_bold_italic.ttf */,
-				213FDD042087169800D3A676 /* segoe_ui_italic.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		213FDD0A208728D500D3A676 /* tableview Cell */ = {
-			isa = PBXGroup;
-			children = (
-				213FDD0D2087294000D3A676 /* Amountcell.swift */,
-			);
-			path = "tableview Cell";
-			sourceTree = "<group>";
-		};
 		5CA1238DFF2EC88CA35AA471 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +173,6 @@
 			children = (
 				736E6065207E1B7400EDC89B /* MenuViewController.swift */,
 				730A8D78207F20AC00152F84 /* HelpViewController.swift */,
-				736E6062207E169900EDC89B /* sidemenuViewController.swift */,
 				730A8D7B207F2AA400152F84 /* SettingViewController.swift */,
 			);
 			path = Sidemenu;
@@ -217,9 +191,7 @@
 			children = (
 				73586168207CE63100996DC8 /* customTextField.swift */,
 				736E605F207E169700EDC89B /* Greegodriverapp-Bridging-Header.h */,
-				213FDD012087164000D3A676 /* Fonts */,
 				734F551A20775E7B00512886 /* Greegodriverapp */,
-				7388182E2078878B007A44D6 /* Storyboards */,
 				734F552F20775E7B00512886 /* GreegodriverappTests */,
 				734F553A20775E7C00512886 /* GreegodriverappUITests */,
 				734F551920775E7B00512886 /* Products */,
@@ -241,11 +213,13 @@
 		734F551A20775E7B00512886 /* Greegodriverapp */ = {
 			isa = PBXGroup;
 			children = (
-				213FDD0A208728D500D3A676 /* tableview Cell */,
+				7388182E2078878B007A44D6 /* Storyboards */,
+				73B5E6902089A21300FBE0F9 /* tableviewcell */,
+				73B5E6842089A11700FBE0F9 /* tabbarscreens */,
+				73139C582086030D00C4A488 /* Greegodriverapp.entitlements */,
 				730A8D7F207F3D9D00152F84 /* Earningbalance */,
 				730A8D7A207F21A000152F84 /* Sidemenu */,
 				736E6054207DE83D00EDC89B /* Helper */,
-				2100F8FB208608D500CD7EFD /* tababrscreens */,
 				7388182D2078874A007A44D6 /* Registration */,
 				734F551B20775E7B00512886 /* AppDelegate.swift */,
 				734F551D20775E7B00512886 /* ViewController.swift */,
@@ -279,6 +253,7 @@
 				730A8D83207F80B700152F84 /* WebServiceClass.swift */,
 				730A8D80207F80A000152F84 /* Reachability.h */,
 				730A8D81207F80AC00152F84 /* Reachability.m */,
+				736E6062207E169900EDC89B /* sidemenuViewController.swift */,
 				736E6060207E169800EDC89B /* SWRevealViewController.h */,
 				736E6061207E169900EDC89B /* SWRevealViewController.m */,
 				736E6052207DE81600EDC89B /* HADropDown.swift */,
@@ -313,6 +288,28 @@
 				734F552420775E7B00512886 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		73B5E6842089A11700FBE0F9 /* tabbarscreens */ = {
+			isa = PBXGroup;
+			children = (
+				73B5E6852089A13E00FBE0F9 /* DrivemapVC.swift */,
+				73B5E6862089A13E00FBE0F9 /* EarningVC.swift */,
+				2119BF25208B260900C20D4F /* ExpressPayVC.swift */,
+				73B5E6872089A13E00FBE0F9 /* ManageVC.swift */,
+				73B5E6882089A13F00FBE0F9 /* payoutVC.swift */,
+				73B5E6892089A13F00FBE0F9 /* RidehistoryVC.swift */,
+			);
+			path = tabbarscreens;
+			sourceTree = "<group>";
+		};
+		73B5E6902089A21300FBE0F9 /* tableviewcell */ = {
+			isa = PBXGroup;
+			children = (
+				73B5E6912089A21E00FBE0F9 /* Amountcell.swift */,
+				73B5E6922089A21F00FBE0F9 /* PayoutActivityCell.swift */,
+			);
+			path = tableviewcell;
 			sourceTree = "<group>";
 		};
 		8ACBBE16A513033742CABF5A /* Frameworks */ = {
@@ -404,6 +401,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					734F552B20775E7B00512886 = {
 						CreatedOnToolsVersion = 9.2;
@@ -442,9 +444,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213FDD05208716B300D3A676 /* Segoe UI.ttf in Resources */,
-				213FDD06208716B300D3A676 /* segoe_ui_bold_italic.ttf in Resources */,
-				213FDD07208716B300D3A676 /* segoe_ui_italic.ttf in Resources */,
 				734F552620775E7B00512886 /* LaunchScreen.storyboard in Resources */,
 				734F552320775E7B00512886 /* Assets.xcassets in Resources */,
 				734F552120775E7B00512886 /* Main.storyboard in Resources */,
@@ -611,13 +610,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Greegodriverapp/Pods-Greegodriverapp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CTCheckbox/CTCheckbox.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPinView/SVPinView.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTCheckbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPinView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -633,19 +636,21 @@
 			files = (
 				734F554A2077797600512886 /* Signup1ViewController.swift in Sources */,
 				73952EF1207889E300C859B7 /* SignupNameVC.swift in Sources */,
+				73B5E6942089A21F00FBE0F9 /* PayoutActivityCell.swift in Sources */,
 				73586169207CE63100996DC8 /* customTextField.swift in Sources */,
-				213FDD0E2087294000D3A676 /* Amountcell.swift in Sources */,
 				7358616B207CEB1C00996DC8 /* OtpverificationViewController.swift in Sources */,
 				736E6058207DF95C00EDC89B /* DriverprofileViewController.swift in Sources */,
 				736E6051207DE70900EDC89B /* DriverpersonalinfoViewController.swift in Sources */,
 				736E605C207E06BA00EDC89B /* DriverbankViewController.swift in Sources */,
 				736E6056207DE86E00EDC89B /* DrivershippingaddViewController.swift in Sources */,
-				2100F8FD2086092000CD7EFD /* DrivemapVC.swift in Sources */,
-				213FDD09208728AA00D3A676 /* EarningVC.swift in Sources */,
+				73B5E68A2089A14000FBE0F9 /* DrivemapVC.swift in Sources */,
+				73B5E68B2089A14000FBE0F9 /* EarningVC.swift in Sources */,
+				2119BF26208B260900C20D4F /* ExpressPayVC.swift in Sources */,
 				736E605E207E121A00EDC89B /* DrivertypeViewController.swift in Sources */,
 				736E605A207DF9DE00EDC89B /* DriverdocumentViewController.swift in Sources */,
-				213FDD10208763D600D3A676 /* ManageVC.swift in Sources */,
 				734F551E20775E7B00512886 /* ViewController.swift in Sources */,
+				73B5E68E2089A14000FBE0F9 /* RidehistoryVC.swift in Sources */,
+				73B5E68D2089A14000FBE0F9 /* payoutVC.swift in Sources */,
 				730A8D84207F80B700152F84 /* WebServiceClass.swift in Sources */,
 				736E6063207E169900EDC89B /* SWRevealViewController.m in Sources */,
 				730A8D79207F20AC00152F84 /* HelpViewController.swift in Sources */,
@@ -660,6 +665,8 @@
 				736E6064207E169900EDC89B /* sidemenuViewController.swift in Sources */,
 				73586167207CE3FB00996DC8 /* MobilenumberViewController.swift in Sources */,
 				736E604E207DD5CF00EDC89B /* PromocodeViewController.swift in Sources */,
+				73B5E6932089A21F00FBE0F9 /* Amountcell.swift in Sources */,
+				73B5E68C2089A14000FBE0F9 /* ManageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,9 +834,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Greegodriverapp/Greegodriverapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5W64V38EUB;
 				INFOPLIST_FILE = Greegodriverapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = innoviussoftware.Greegodriverapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -846,9 +855,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Greegodriverapp/Greegodriverapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5W64V38EUB;
 				INFOPLIST_FILE = Greegodriverapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = innoviussoftware.Greegodriverapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
